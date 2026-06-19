@@ -155,12 +155,12 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="about" className="relative section-pad overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          className="grid lg:grid-cols-2 gap-16 items-center"
+          className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -173,7 +173,7 @@ export default function About() {
                 01 / About
               </span>
               <h2
-                className="text-4xl lg:text-5xl font-extrabold text-foreground mt-3 leading-tight"
+                className="section-title font-extrabold text-foreground mt-3 leading-tight"
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 Building my future,

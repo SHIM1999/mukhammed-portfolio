@@ -78,9 +78,9 @@ function TimelineItem({ event, index }: { event: typeof events[0]; index: number
         initial={{ opacity: 0, x: isLeft ? -28 : 28 }}
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
-        className={`md:w-[calc(50%-2.5rem)] w-full ${isLeft ? "md:pr-8" : "md:pl-8"} pl-10 md:pl-0`}
+        className={`md:w-[calc(50%-2.5rem)] w-full ${isLeft ? "md:pr-8" : "md:pl-8"} pl-9 sm:pl-10 md:pl-0`}
       >
-        <div className="relative bg-card rounded-2xl p-4 border border-white/8 hover:border-white/14 transition-colors">
+        <div className="relative bg-card rounded-2xl p-4 sm:p-5 border border-white/8 hover:border-white/14 transition-colors">
           <div
             className={`absolute left-0 top-0 bottom-0 w-0.5 rounded-full ${
               isCyan ? "bg-cyan-400/60" : "bg-indigo-400/60"
@@ -154,17 +154,17 @@ export default function Timeline() {
 
   return (
     // No overflow-hidden — sticky won't work inside overflow:hidden
-    <section id="journey" ref={sectionRef} className="relative py-24 lg:py-32">
+    <section id="journey" ref={sectionRef} className="relative section-pad">
       <div className="absolute top-1/2 right-0 w-96 h-96 -translate-y-1/2 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-16">
+        <div className="text-center section-header-mb">
           <span className="text-xs font-mono text-cyan-400/70 tracking-widest uppercase block mb-4">
             02 / Journey
           </span>
           <h2
-            className="text-4xl lg:text-5xl font-extrabold text-foreground"
+            className="section-title font-extrabold text-foreground"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             My <span className="gradient-text-blue">Journey</span>

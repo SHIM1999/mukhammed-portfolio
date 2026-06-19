@@ -7,7 +7,7 @@ export default function Footer() {
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <footer className="relative border-t border-white/8 py-12">
+    <footer className="relative border-t border-white/8 py-10 md:py-12" style={{ paddingBottom: "max(2.5rem, env(safe-area-inset-bottom))" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid sm:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
@@ -31,7 +31,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-foreground/45">
               {["about", "projects", "skills", "contact"].map((id) => (
                 <li key={id}>
-                  <button onClick={() => scrollTo(id)} className="capitalize hover:text-cyan-400 transition-colors">
+                  <button onClick={() => scrollTo(id)} className="capitalize hover:text-cyan-400 transition-colors py-1 min-h-9">
                     {id}
                   </button>
                 </li>

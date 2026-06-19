@@ -9,7 +9,7 @@ export default function Philosophy() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="philosophy" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="philosophy" className="relative section-pad overflow-hidden">
       <div className="absolute inset-0 dot-grid opacity-40 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-indigo-500/6 rounded-full blur-3xl pointer-events-none" />
 
@@ -29,7 +29,7 @@ export default function Philosophy() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
         >
           <p
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight mb-8"
+            className="section-title font-extrabold text-foreground leading-tight mb-6 md:mb-8"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             I don't just want to write code.

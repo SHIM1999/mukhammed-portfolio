@@ -78,12 +78,12 @@ function SectionBlock({ title, icon: Icon, children, delay = 0 }: { title: strin
 
 export default function Resume() {
   return (
-    <section id="resume" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="resume" className="relative section-pad overflow-hidden">
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/4 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-16 gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between section-header-mb gap-4">
           <div>
             <motion.span
               initial={{ opacity: 0 }}
@@ -98,7 +98,7 @@ export default function Resume() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white"
+              className="section-title font-extrabold text-white"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Experience &amp; <span className="gradient-text-cyan">Education</span>
@@ -109,7 +109,7 @@ export default function Resume() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             href="#"
-            className="flex items-center gap-2 px-4 py-2 rounded-xl border border-cyan-400/30 bg-cyan-400/5 text-cyan-400 text-sm font-semibold hover:bg-cyan-400/10 transition-colors self-start sm:self-auto"
+            className="flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-3 min-h-11 rounded-xl border border-cyan-400/30 bg-cyan-400/5 text-cyan-400 text-sm font-semibold hover:bg-cyan-400/10 transition-colors self-start sm:self-auto"
             style={{ fontFamily: "'DM Sans', sans-serif" }}
           >
             <Download className="w-4 h-4" />
@@ -125,11 +125,11 @@ export default function Resume() {
               <div className="space-y-4">
                 {education.map((edu, i) => (
                   <div key={i} className="glass-card rounded-2xl p-4 border border-white/8">
-                    <div className="flex items-start justify-between gap-2 mb-1">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-2 mb-1">
                       <h4 className="text-white font-semibold text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                         {edu.institution}
                       </h4>
-                      <span className="text-xs font-mono text-cyan-400/60 flex-shrink-0">{edu.period}</span>
+                      <span className="text-xs font-mono text-cyan-400/60 sm:flex-shrink-0">{edu.period}</span>
                     </div>
                     <p className="text-cyan-400/80 text-xs font-mono mb-2">{edu.degree}</p>
                     <p className="text-white/50 text-xs leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
@@ -162,11 +162,11 @@ export default function Resume() {
                 <div key={i} className="glass-card rounded-2xl p-4 border border-white/8 relative overflow-hidden">
                   <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400/60 to-indigo-400/30 rounded-full" />
                   <div className="pl-3">
-                    <div className="flex items-start justify-between gap-2 mb-0.5">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-2 mb-0.5">
                       <h4 className="text-white font-semibold text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                         {exp.role}
                       </h4>
-                      <span className="text-xs font-mono text-cyan-400/60 flex-shrink-0">{exp.period}</span>
+                      <span className="text-xs font-mono text-cyan-400/60 sm:flex-shrink-0">{exp.period}</span>
                     </div>
                     <p className="text-indigo-400/70 text-xs font-mono mb-2">{exp.company}</p>
                     <p className="text-white/50 text-xs leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>

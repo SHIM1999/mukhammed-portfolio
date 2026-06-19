@@ -58,15 +58,32 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
   const handleNav = (href: string) => {
     setMenuOpen(false);
     document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-white/8 shadow-2xl">
+    <header
+      className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-white/8 shadow-2xl"
+      style={{ paddingTop: "env(safe-area-inset-top)" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center h-16">
+        <div className="flex items-center h-14 md:h-16">
+
+          {/* Mobile brand */}
+          <button
+            onClick={() => handleNav("#home")}
+            className="md:hidden text-sm font-bold text-foreground truncate max-w-[40vw]"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            Mukhammed
+          </button>
 
           {/* Desktop nav — centered */}
           <nav className="hidden md:flex flex-1 justify-center items-center gap-1">
@@ -106,14 +123,18 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Mobile toggle */}
-          <button
-            className="md:hidden ml-auto text-white/70 hover:text-white transition-colors"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile: lang + menu */}
+          <div className="md:hidden ml-auto flex items-center gap-2">
+            <LanguageToggle />
+            <button
+              className="tap-target flex items-center justify-center text-white/70 hover:text-white transition-colors rounded-lg"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -125,14 +146,14 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
-            className="md:hidden border-t border-white/8 bg-background/95 backdrop-blur-xl"
+            className="md:hidden border-t border-white/8 bg-background/95 backdrop-blur-xl max-h-[calc(100dvh-3.5rem-env(safe-area-inset-top))] overflow-y-auto"
           >
-            <div className="px-4 py-4 flex flex-col gap-1">
+            <div className="px-4 py-4 flex flex-col gap-1.5">
               {navItems.map((item) => (
                 <button
                   key={item.href}
                   onClick={() => handleNav(item.href)}
-                  className={`text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                  className={`text-left px-4 py-3 min-h-11 rounded-lg text-base font-medium transition-colors ${
                     active === item.href.slice(1)
                       ? "text-cyan-400 bg-cyan-400/10"
                       : "text-white/70 hover:text-white hover:bg-white/5"
@@ -144,7 +165,7 @@ export default function Navbar() {
               ))}
               <button
                 onClick={() => handleNav("#contact")}
-                className="mt-2 px-4 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-500 text-white"
+                className="mt-2 px-4 py-3 min-h-11 text-base font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-500 text-white"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
                 Let's Talk

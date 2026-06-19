@@ -17,12 +17,12 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="contact" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="contact" className="relative section-pad overflow-hidden">
       <div className="absolute top-1/2 right-0 w-96 h-96 -translate-y-1/2 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div ref={ref} className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center section-header-mb">
           <motion.span
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
@@ -34,7 +34,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl lg:text-5xl font-extrabold text-foreground mb-4"
+            className="section-title font-extrabold text-foreground mb-4"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             Let's <span className="gradient-text-blue">Build Something</span>
@@ -62,14 +62,14 @@ export default function Contact() {
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
               rel="noreferrer"
-              className={`flex items-center gap-4 p-4 rounded-xl bg-card border ${bg.split(" ")[1]} hover:border-opacity-60 transition-all group`}
+              className={`flex items-center gap-4 p-4 min-h-[56px] rounded-xl bg-card border ${bg.split(" ")[1]} hover:border-opacity-60 transition-all group`}
             >
-              <div className={`w-10 h-10 rounded-lg ${bg} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
+              <div className={`w-11 h-11 rounded-lg ${bg} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
                 <Icon className={`w-5 h-5 ${color}`} />
               </div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <p className="text-xs text-foreground/40 font-mono mb-0.5">{label}</p>
-                <p className="text-foreground font-semibold text-sm">{value}</p>
+                <p className="text-foreground font-semibold text-sm break-all sm:break-normal">{value}</p>
               </div>
             </a>
           ))}

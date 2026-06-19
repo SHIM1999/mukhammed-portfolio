@@ -29,7 +29,7 @@ function PipelineStep({ step, index }: { step: typeof pipeline[0]; index: number
     >
       <motion.div
         whileHover={{ scale: 1.08, y: -4 }}
-        className={`w-20 h-20 rounded-2xl border ${step.bg} flex items-center justify-center transition-all`}
+        className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl border ${step.bg} flex items-center justify-center transition-all`}
       >
         <Icon className={`w-8 h-8 ${step.color}`} />
       </motion.div>
@@ -40,7 +40,7 @@ function PipelineStep({ step, index }: { step: typeof pipeline[0]; index: number
         <motion.div
           animate={{ y: [0, 4, 0] }}
           transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
-          className="mt-3 text-foreground/30"
+          className="mt-3 text-foreground/30 hidden md:block"
         >
           <ArrowRight className="w-4 h-4 rotate-90" />
         </motion.div>
@@ -51,13 +51,13 @@ function PipelineStep({ step, index }: { step: typeof pipeline[0]; index: number
 
 export default function EngineeringDirection() {
   return (
-    <section id="vision" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="vision" className="relative section-pad overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center section-header-mb">
           <span className="text-xs font-mono text-cyan-400/70 tracking-widest uppercase block mb-4">05 / Vision</span>
-          <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <h2 className="section-title font-extrabold text-foreground mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             My Engineering <span className="gradient-text-blue">Direction</span>
           </h2>
           <p className="text-foreground/55 text-base max-w-xl mx-auto" style={{ fontFamily: "'DM Sans', sans-serif" }}>
@@ -69,7 +69,7 @@ export default function EngineeringDirection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 mb-14"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 mb-10 md:mb-14"
         >
           {pipeline.map((step, i) => (
             <PipelineStep key={step.label} step={step} index={i} />
@@ -81,7 +81,7 @@ export default function EngineeringDirection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="bg-card border border-white/8 rounded-2xl p-8"
+          className="bg-card border border-white/8 rounded-2xl p-5 md:p-8"
         >
           <h3 className="text-xl font-bold text-foreground mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             The Vision

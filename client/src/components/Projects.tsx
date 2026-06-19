@@ -72,7 +72,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       whileHover={{ y: -6 }}
       className="group"
     >
-      <div className={`relative h-full bg-card border border-white/8 ${project.border} rounded-2xl p-6 transition-all duration-300 overflow-hidden`}>
+      <div className={`relative h-full bg-card border border-white/8 ${project.border} rounded-2xl p-5 md:p-6 transition-all duration-300 overflow-hidden`}>
         {/* Gradient top tint */}
         <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`} />
 
@@ -99,10 +99,10 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           </div>
 
           <div className="flex gap-2">
-            <a href="#" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-foreground/70 hover:text-foreground text-xs font-semibold transition-colors">
+            <a href="#" className="flex items-center gap-1.5 px-3 py-2.5 min-h-10 rounded-lg bg-white/5 hover:bg-white/10 text-foreground/70 hover:text-foreground text-xs font-semibold transition-colors">
               <Github className="w-3.5 h-3.5" /> Code
             </a>
-            <a href="#" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 text-cyan-400 text-xs font-semibold transition-colors">
+            <a href="#" className="flex items-center gap-1.5 px-3 py-2.5 min-h-10 rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 text-cyan-400 text-xs font-semibold transition-colors">
               <ExternalLink className="w-3.5 h-3.5" /> Demo
             </a>
           </div>
@@ -114,13 +114,13 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="projects" className="relative section-pad overflow-hidden">
       <div className="absolute top-1/2 left-0 w-96 h-96 -translate-y-1/2 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center section-header-mb">
           <span className="text-xs font-mono text-cyan-400/70 tracking-widest uppercase block mb-4">04 / Projects</span>
-          <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <h2 className="section-title font-extrabold text-foreground mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             Work I'm <span className="gradient-text-blue">Proud Of</span>
           </h2>
           <p className="text-foreground/55 text-base max-w-xl mx-auto" style={{ fontFamily: "'DM Sans', sans-serif" }}>

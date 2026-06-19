@@ -332,7 +332,7 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="skills" ref={sectionRef} className="relative section-pad overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-8">
@@ -351,7 +351,7 @@ export default function Skills() {
             className="inline-flex items-center gap-3 justify-center"
           >
             <h2
-              className="text-4xl lg:text-5xl font-extrabold text-foreground"
+              className="section-title font-extrabold text-foreground"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               {t("skills.title")}
@@ -371,8 +371,8 @@ export default function Skills() {
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.25 }}
-          className="relative w-full rounded-2xl overflow-hidden border border-white/8"
-          style={{ height: 520, background: "rgba(7, 15, 28, 0.8)", touchAction: "none" }}
+          className="relative w-full h-[340px] sm:h-[420px] md:h-[520px] rounded-2xl overflow-hidden border border-white/8"
+          style={{ background: "rgba(7, 15, 28, 0.8)", touchAction: "none" }}
         >
           {inView && (
             <Canvas
@@ -399,6 +399,10 @@ export default function Skills() {
           )}
         </motion.div>
 
+        <p className="md:hidden text-center text-xs font-mono text-foreground/40 mt-3">
+          Tap &amp; drag cubes to play
+        </p>
+
         {/* Skill list */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -411,7 +415,7 @@ export default function Skills() {
             {skills.map((skill) => (
               <div
                 key={skill.name}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-card border border-white/8 hover:border-white/16 transition-colors"
+                className="flex items-center gap-2 px-3 py-2 min-h-9 rounded-lg bg-card border border-white/8 hover:border-white/16 transition-colors"
               >
                 <div
                   className="w-2 h-2 rounded-full flex-shrink-0"

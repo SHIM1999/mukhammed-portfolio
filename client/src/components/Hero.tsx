@@ -1,44 +1,14 @@
 /* ============================================================
-   Hero — photo slideshow, animated entry
+   Hero — static photo, animated entry
    ============================================================ */
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useState, useEffect, useRef } from "react";
 
-const BASE_PHOTO = "/Me/me.png";
-const EXTRA_PHOTOS = [
-  "/Me/Me2left.png",
-  "/Me/Me2left2down.png",
-  "/Me/Me2right.png",
-  "/Me/Me2right2down.png",
-  "/Me/Me2up2left.png",
-  "/Me/Me2up2right.png",
-];
-
-function shuffle<T>(arr: T[]): T[] {
-  return [...arr].sort(() => Math.random() - 0.5);
-}
-function buildQueue() { return [BASE_PHOTO, ...shuffle(EXTRA_PHOTOS)]; }
+const PHOTO = "/Me/ME.png";
 
 export default function Hero() {
   const { t } = useLanguage();
-  const [queue, setQueue] = useState<string[]>(buildQueue);
-  const [idx,   setIdx]   = useState(0);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const currentPhoto = queue[idx] ?? BASE_PHOTO;
-
-  useEffect(() => {
-    const delay = currentPhoto === BASE_PHOTO ? 3500 : 1500;
-    timerRef.current = setTimeout(() => {
-      setIdx((prev) => {
-        const next = prev + 1;
-        if (next >= queue.length) { setQueue(buildQueue()); return 0; }
-        return next;
-      });
-    }, delay);
-    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
-  }, [idx, queue, currentPhoto]);
 
   const containerVariants = {
     hidden:  { opacity: 0 },
@@ -54,21 +24,21 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16 dot-grid"
+      className="relative min-h-[100dvh] md:min-h-screen flex items-center justify-center overflow-hidden pt-16 pb-20 sm:pt-20 sm:pb-16 dot-grid"
     >
       <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-cyan-500/8 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-indigo-500/8 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <motion.div
-          className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center"
+          className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-20 items-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* Left: text */}
-          <div className="space-y-7 order-2 md:order-1">
-            <motion.div variants={item} className="flex items-center gap-2 w-fit">
+          <div className="space-y-5 sm:space-y-7 order-2 md:order-1 text-center md:text-left">
+            <motion.div variants={item} className="flex items-center gap-2 w-fit mx-auto md:mx-0">
               <Sparkles className="w-4 h-4 text-cyan-400" />
               <span className="text-sm font-mono text-cyan-400 tracking-widest uppercase">
                 {t("hero.badge")}
@@ -77,7 +47,7 @@ export default function Hero() {
 
             <motion.h1
               variants={item}
-              className="text-5xl lg:text-6xl xl:text-7xl font-extrabold text-foreground leading-[1.1] tracking-tight"
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-foreground leading-[1.1] tracking-tight"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               {t("hero.title")}
@@ -85,23 +55,23 @@ export default function Hero() {
 
             <motion.p
               variants={item}
-              className="text-lg text-foreground/65 leading-relaxed max-w-lg"
+              className="text-base sm:text-lg text-foreground/65 leading-relaxed max-w-lg mx-auto md:mx-0"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
               {t("hero.subtitle")}
             </motion.p>
 
-            <motion.div variants={item} className="flex flex-wrap gap-3 pt-2">
+            <motion.div variants={item} className="flex flex-col sm:flex-row flex-wrap gap-3 pt-2 justify-center md:justify-start">
               <button
                 onClick={() => scrollTo("projects")}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-semibold text-sm transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 active:scale-[0.97]"
+                className="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 min-h-11 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-semibold text-sm transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 active:scale-[0.97]"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
                 {t("hero.cta1")} <ArrowRight className="w-4 h-4" />
               </button>
               <button
                 onClick={() => scrollTo("contact")}
-                className="px-6 py-3 rounded-xl border border-cyan-400/30 text-cyan-400 hover:bg-cyan-400/10 font-semibold text-sm transition-all duration-200 active:scale-[0.97]"
+                className="w-full sm:w-auto px-6 py-3.5 min-h-11 rounded-xl border border-cyan-400/30 text-cyan-400 hover:bg-cyan-400/10 font-semibold text-sm transition-all duration-200 active:scale-[0.97]"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
                 {t("hero.cta3")}
@@ -114,26 +84,17 @@ export default function Hero() {
             <div className="relative flex flex-col items-center">
               <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-64 h-64 bg-cyan-400/12 rounded-full blur-3xl pointer-events-none" />
               <div
-                className="relative w-96 sm:w-[440px] overflow-hidden"
+                className="relative w-full max-w-[280px] sm:max-w-[360px] md:w-96 md:max-w-none h-[400px] sm:h-[480px] md:h-[560px] overflow-hidden"
                 style={{
-                  height: 560,
-                  WebkitMaskImage: "radial-gradient(ellipse 82% 88% at 50% 38%, black 30%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,0.3) 78%, transparent 92%)",
-                  maskImage:       "radial-gradient(ellipse 82% 88% at 50% 38%, black 30%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,0.3) 78%, transparent 92%)",
+                  WebkitMaskImage: "linear-gradient(to bottom, black 70%, rgba(0,0,0,0.4) 90%, transparent 100%)",
+                  maskImage:       "linear-gradient(to bottom, black 70%, rgba(0,0,0,0.4) 90%, transparent 100%)",
                 }}
               >
-                <AnimatePresence mode="sync">
-                  <motion.img
-                    key={currentPhoto}
-                    src={currentPhoto}
-                    alt="Mukhammed"
-                    className="absolute inset-0 w-full h-full object-cover object-center"
-                    style={{ objectPosition: "center 15%" }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.75, ease: [0.23, 1, 0.32, 1] }}
-                  />
-                </AnimatePresence>
+                <img
+                  src={PHOTO}
+                  alt="Mukhammed"
+                  className="absolute inset-0 w-full h-full object-contain object-top"
+                />
               </div>
               <div className="mt-2 px-4 py-2 rounded-xl bg-card border border-white/10 shadow-xl backdrop-blur-sm">
                 <p className="text-xs font-mono text-cyan-400">KARAKALPAKSTAN / UZBEKISTAN</p>
@@ -147,7 +108,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
         >
           <p className="text-xs text-foreground/40 font-mono tracking-widest">SCROLL</p>
           <motion.div
