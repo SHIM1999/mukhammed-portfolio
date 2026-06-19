@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const PHOTO = "/Me/ME.png";
+const PHOTO = "/Me/Me.png";
 
 export default function Hero() {
   const { t } = useLanguage();
