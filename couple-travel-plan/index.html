@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Move Plan</title>
+    <meta
+      name="description"
+      content="Frontend-only visual travel and life transition planner for Korea, Uzbekistan, Philippines, Taiwan, and Australia."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="postcard-app">
+      <section class="postcard" aria-label="Cute country move order">
+        <div class="intro">
+          <div>
+            <p class="eyebrow">our journey board</p>
+            <h1>Travel Together</h1>
+            <p class="subtitle">Click the stamps. Details later, cute route now xD</p>
+          </div>
+        </div>
+
+        <div class="card-stage">
+          <img src="./travel-together-pixel-v2.png" alt="Pixel art travel postcard of the couple" />
+          <div class="plane-dot" id="plane">✈</div>
+          <div class="active-note" id="activeNote">Starting in Korea</div>
+        </div>
+
+        <div class="route-wrap">
+          <div class="route-track" id="routeTrack"></div>
+          <div class="message-strip">
+            <span>Collect moments, not things</span>
+            <span>Frontend only</span>
+            <span>GitHub Pages ready</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
